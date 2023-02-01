@@ -79,20 +79,3 @@ echo "</table>";
 <input type="submit" value="insert" /><br />
 </form>
 <?php
-/*if (isset($_POST["KeikkapaikkaID"], $_POST["postiosoite"], $_POST["postitoimipaikka"], $_POST["puhelin"], $_POST["lahiosoite"])) {
-   echo "testi";
-$KeikkapaikkaID= $_POST["KeikkapaikkaID"];
- $postitoimipaikka= $_POST["postiosoite"];
- $puhelin = $_POST["postitoimipaikka"];
- $lähiosoite = $_POST["puhelin"];
- $postiosoite = $_POST["lahiosoite"];
-}
- 
- // muuttujien paikalle ? -merkit
- $sql = "INSERT INTO `Keikkapaikat` (`KeikkapaikkaID`,`postiosoite`, `postitoimipaikka`, `puhelin`,`lähiosoite`) VALUES (?,?,?,?,?)";
- // kerätään muuttujat taulukkoon:
- $data = array ($KeikkapaikkaID, $postiosoite, $postitoimipaikka, $puhelin, $lähiosoite);
- // suoritetaan sql-lause
- $stmt = $pdo->prepare($sql);
- $stmt->execute($data); //*
-?>

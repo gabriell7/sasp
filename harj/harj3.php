@@ -1,14 +1,22 @@
 <?php
 
+echo "<h1>harj 3</h1>";
+echo "<h2>teht 1</h2>";
+
+$luku1 = rand(1,1000);
+
+echo "Voittajan arpa nro $luku1". "<br>";
+
+echo "<h2>teht 2</h2>";
 
 $numero3= 68995;
-echo(floor(1.5) . "<br>");
-echo(ceil(1.456) . "<br>");
+echo(ceil(1.5) . "<br>");
+echo(floor(1.456) . "<br>");
 echo(round(68995, -1 ) . "<br>");
 echo(ceil(124.558 ) . "<br>");
-echo(ceil(3.14) . "<br>");
+echo(floor(3.14) . "<br>");
 
- 
+echo "<h2>teht 3</h2>"; 
  
 $luku = rand(1,20);
 if ($luku % 2 == 0) 
@@ -17,7 +25,7 @@ else {
     echo "<h4> $luku  pariton   </h4>";
     }
 
-
+    echo "<h2>teht 4</h2>";
 
 
 
@@ -36,6 +44,10 @@ else if ($luku2 != 35)
 else {
     echo "<h4> $luku2 tämä luku on pariton   </h4>";
 }
+
+echo "<h2>teht 5</h2>"; 
+
+
 
 
 $merkkijono1 = "";

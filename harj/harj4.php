@@ -3,9 +3,10 @@ if(isset($_POST["rahat"])) {
 	// ota muttuja talteen
 	$rahat = $_POST ["rahat"];
 	// lakske tulos
-	$bensaraha = $rahat / 1.5;
+	$bensaraha = $rahat / 1.55;
 	// tulosta tiedot käyttäjälle
-	echo "Saat 95:sta $besamaaraa litraa";
+	$bensaraha = round($bensaraha * 100)/100; 
+	echo "Saat 95:sta ".$bensaraha ." litraa";
 }
 
 
@@ -16,11 +17,14 @@ if(isset($_POST["rahat"])) {
  <!-- bensalaskuri
  mieti mitä tietoja käyttäjältä tarvitaam
  -->
-<form>
+<form method ="post">
 <label for ="rahat">Anna rahamäärä:</label><br />
 <input type="number" name="rahat" step="0.1"/><br />
 <input type="submit" value="Laske" />
 </form>
+
+
+
 <?php
 //harj 4.2 käsittelijä 
 if (isset($_POST["ostokset"], $_POST["summa"])){
@@ -42,6 +46,7 @@ mieti mitä tietoja käyttäjältä tarvitaan
 <input type= "number" name="summa" step="0.1" /><br />
 <input type="submit" value="Laske" />
 </form>
+
 
 <h2>4.5 Valintarakenne</h2>
 <form method ="post">

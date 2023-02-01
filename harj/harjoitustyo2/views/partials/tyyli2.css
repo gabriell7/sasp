@@ -1,0 +1,19 @@
+body{
+  background-image: linear-gradient(to right, rgb(12, 108, 121) , rgba(37, 78, 189, 0.685));
+}
+    
+  
+  .header {
+    background-color: #180d0d;
+    padding: 20px;
+    text-align: center;
+    
+  }
+
+  .linkit {
+    color: white;
+    font-size: 1.2rem;
+    text-decoration:none;
+    margin: 10px;
+  }
+

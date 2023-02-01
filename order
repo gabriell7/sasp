@@ -1,0 +1,126 @@
+return (
+
+
+    <div>
+
+      <button onClick={() => setShowform(!showform)}>{showform ? "Piilota" : "Näytä"} yhteystiedot</button>
+      {showform &&
+
+        <div>
+
+
+
+          <h2>Vahvista Tilaus</h2>
+
+          <div className="Order">
+
+            <form onSubmit={e => submitHandler(e, newName, newEmail, newNumper, newAdress, newHomeAdress, newPostnumber)}>
+              Nimi:
+
+              <input onChange={e => setName(e.target.value)} value={newName} required />
+
+
+              <br />
+
+              Sähköposti:
+
+              <input onChange={e => setEmail(e.target.value)} value={newEmail} required />
+
+
+              <br />
+
+              Puhelinnumero:
+
+              <input onChange={e => setNumber(e.target.value)} value={newNumper} required />
+
+
+              <br />
+
+              Osoite:
+
+              <input onChange={e => setAdress(e.target.value)} value={newAdress} required />
+
+
+              <br />
+
+
+              Postinumero:
+
+              <input onChange={e => setPostnumber(e.target.value)} value={newPostnumber} required />
+
+
+              <br />
+
+              Katuosoite:
+
+              <input onChange={e => setHomeAdress(e.target.value)} value={newHomeAdress} required />
+
+
+              <br />
+
+
+              <button className="buyyyyy" onClick={() => setShowSummary(!showsummary)}>Summary </button>
+
+      
+
+            </form>
+        </div>
+      
+}
+            <div className="wrapper2">
+              <div className="form">
+                Yhteenveto
+                <div className="from2">
+
+                  <div className="input_field2">
+
+                    Tilatut tuoteet:<CartItems itemsData={items} />
+                    Kokonaishinta: {cartTotal}
+
+                    <p>Katuosoite:{clientinfo.name}</p>
+
+                    <br />
+                    Kiitos tilauksesta {clientinfo.name}!
+                    <br /><br />
+
+                    Tiedot ovat lähetetty
+                    <br />
+                    <br />
+                    <button type="submit2"
+                      onClick={() => emptyCart()}
+
+                    >ok</button><br />
+                  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+          
+          
+          </div>
+         
+      
+  
+  );
+
+          <button onClick={() => reloadPage(!showsummary)}>poista</button>
+
+ 
+       
+
+      
+
+
+ 
+
+
+
+
+
+      export default Orderform;
+
+      
+       
+  

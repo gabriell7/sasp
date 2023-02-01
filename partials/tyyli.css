@@ -1,0 +1,16 @@
+h2{
+  color:blue;
+  font-family:Verdana
+  
+}
+
+label {
+	font-weight:bold;
+	display: block;
+	width: 155px;
+	float: left;
+}
+
+body {
+	font-family:arial;
+}

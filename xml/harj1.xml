@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<tiedot>
+
+<yritys>
+	 <nimi>gabunbisness</nimi>
+	 <osoite> gabunkatu </osoite>
+	 <postiosoite> 0111 Gabucity </postiosite>
+</yritys>
+
+
+
+	<saaja> 
+	 <nimi> harri talola </nimi>	
+	 <sähköposti> harritalola@email.com</sähköposti>
+	 <numero> 0461234567 </numero>
+	 <osoite> rantamäki 2 </osite>
+	</saaja>
+
+
+<laskuttaja>
+	<nimi> jarmo hiihto </nimi>
+	<sähköposti> jarmohiihto@email.com</sähkoposti>
+	<numero> 0467654321 </numero>
+	<osoite> rantamäki 3 </osite>
+</laskuttaja>	
+
+<lasku>
+<ostos> iphonw 12 hinta: 1000,00e </ostos>
+<ostos2> pelikone hinta:700,00e </ostos2>
+<vro>  7,77e <vro>
+<kokonaishinta> 1707,77e </kokonaishinta>
+
+
+
+
+</tiedot>

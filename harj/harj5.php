@@ -19,15 +19,34 @@ for($i = 1; $i <= 10; $i++) {
  ?>
  
  <h2>5.3</h2>
+ 
  <?php
- /*
- $i=0
- while ($i<korkes){
-	 $j=0
-	 while($j<leveys){
-	 } 
-	 */
+   if(isset($_POST["pituus"]) && isset($_POST["leveys"])) {
+    $pituus = $_POST["pituus"];
+    $leveys = $_POST["leveys"];
+
+    $rivi = 0;
+  while ($rivi < $pituus) {
+    $col = 0;
+    while ($col < $leveys) {
+      echo "*";
+      $col = $col + 1;
+    }
+    echo "<br>";
+    $rivi = $rivi + 1;
+  }
+
+   }
  ?>
+<form method ="post">
+<label for="pituus">leveys </br />
+<input type="number" name="pituus" step="0.1" /><br />
+<label for ="leveys"leveys   name="leveys"> pituus</label><br />
+<input type= "leveys" name="leveys" step="0.1" /><br />
+<input type="submit" value="Laske" />
+</form>
+
+
 <h2>5.4</h2>
 <?php
 $etunimet = array("Timo", "Tero", "Tauno");

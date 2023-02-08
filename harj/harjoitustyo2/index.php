@@ -46,15 +46,11 @@ switch($action) {
     } else indexcontroller();
     break;
 
-    case "deleteplayer":
-    if(islogged()) {
-        deleteplayercontroller();
-    } else require "./views/loginform.view.php";
-    break;
 
-    case "deletemerkintä":
+
+    case "deletemerkinta":
         if(islogged()) {
-            deletemerkintäcontroller();
+            deletemerkintacontroller();
         } else require "./views/loginform.view.php";
         break;
 

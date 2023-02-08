@@ -12,7 +12,7 @@ function indexcontroller()
 
 function admincontroller()
 {
-    $merkinnät = getAllmerkintäbykayttaja();
+    $merkinnat = getAllmerkintäbykayttaja();
     //var_dump($players);
     require "./views/admin.view.php";
 }
@@ -95,12 +95,12 @@ function getaddmerkintärcontroller()
 }
 
 
-function deleteplayercontroller()
+function deletemerkintacontroller()
 {
-    if(isset($_GET["playerID"])) {
-        $playerID = $_GET["playerID"];
-        if(deletePlayer($playerID)) $message="Pelaaja on poistettu";
-        else $message="Pelaaja ei poistunut";
+    if(isset($_GET["merkintaID"])) {
+        $merkintaID = $_GET["merkintaID"];
+        if(deleteMerkinta($merkintaID)) $message="Merkinta on poistettu";
+        else $message="Merkinta ei poistunut";
         $merkinnat = getAllmerkinnat();
         require "./views/admin.view.php";
     } else header("Location:./index.php?action=admin");

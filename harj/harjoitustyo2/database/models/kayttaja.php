@@ -65,7 +65,7 @@ function getAllmerkintäbykayttaja()
 
     $stm = $pdo->prepare($sql);
 
-    $stm->bindValue(1, $_SESSION{"id"});
+    $stm->bindValue(1, $_SESSION["id"]);
     $stm->execute(); //Kohta 3 suorita sql
 
     $merkinnät = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -133,11 +133,11 @@ function editPlayer($data)
     return $ok;
 }
 
-function deletePlayer($id)
+function deleteMerkinta($id)
 {
     global $pdo;
 
-    $sql = "DELETE FROM players WHERE playerID = ?";
+    $sql = "DELETE FROM ht2_merkinta WHERE merkintaID = ?";
     $stm = $pdo->prepare($sql);
     $stm->bindValue(1, $id);
 

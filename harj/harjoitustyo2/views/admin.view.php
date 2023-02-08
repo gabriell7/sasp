@@ -11,29 +11,29 @@ if(isset($message)) echo $message;
 
 
 <?php
-
+ /*
 foreach ($merkinnat as $merkinta) { ?>
 <h4><?=$merkinta["päiväys"];?></h4>
 <h4><?=$merkinta["intentsiteeti"];?></h4>
 <h4><?=$merkinta["merkintaID"];?></h4>
 <h4><?=$merkinta["lajiID"];?></h4>
-<a href="./index.php?action=editplayer&playerID=<?= $merkinta["merkintaID"];?>">Muokkaa</a><br>
-<a href="./index.php?action=deleteplayer&playerID=<?= $merkinta["merkintaID"];?>">Poista</a><br>
-
-                             
-<?php
+<a href="./index.php?action=editmerkinta&merkintaID=<?= $merkinta["merkintaID"];?>">Muokkaa</a><br>
+<a href="./index.php?action=deletemerkinta&merkintaID=<?= $merkinta["merkintaID"];?>">Poista</a><br>
 }
+*/
+?>                           
+<?php
+
 
 include "./views/partials/end.php";
-/*foreach ($merkinnat as $merkinta) { ?>
+foreach ($merkinnat as $merkinta) { ?>
 <h4><?=$merkinta["päiväys"];?></h4>
 <h4><?=$merkinta["intentsiteeti"];?></h4>
 <h4><?=$merkinta["merkintaID"];?></h4>
 <h4><?=$merkinta["lajiID"];?></h4>
-<a href="./index.php?action=editplayer&playerID=<?= $merkinta["merkintaID"];?>">Muokkaa</a><br>
-<a href="./index.php?action=deleteplayer&playerID=<?= $merkinta["merkintaID"];?>">Poista</a><br>
+<a href="./index.php?action=editmerkinta&merkintaID=<?= $merkinta["merkintaID"];?>">Muokkaa</a><br>
+<a href="./index.php?action=deletemerkinta&merkintaID=<?= $merkinta["merkintaID"];?>">Poista</a><br>
 
                              
 <?php
 }
-*/

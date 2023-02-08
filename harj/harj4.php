@@ -160,17 +160,17 @@ pienempi: <input type="radio" name="valinta" value="pienempi">
 
 
 <?php
-if (isset($_POST['suurempi'] ,$_POST['pienempi'],$_POST['luku'],$_POST['luku2'])) {
-    $suurempi = $_POST["suurempi"];
-    $pienempi = $_POST["pienempi"];
+if (isset($_POST['valinta'] ,$_POST['luku'],$_POST['luku2'])) {
+   // $suurempi = $_POST["suurempi"];
+    //$pienempi = $_POST["pienempi"];
 	$luku = $_POST["luku"];
     $luku2 = $_POST["luku2"];
    echo "$luku ja $luku2.";
 
     if ($_POST["valinta"] == "pienempi") {
-		echo "Pienempi luku on: " . min($suurempi, $pienempi);
-    } elseif ($_POST['valinta'] == 'suurempi') {
-        echo "Suurempi luku on: " . max($suurempi, $pienempi);
+		echo "Pienempi luku on: " . min($luku, $luku2);
+    } else if  ($_POST['valinta'] == 'suurempi') {
+        echo "Suurempi luku on: " . max($luku, $luku2);
     }
 }
 ?>

@@ -8,7 +8,7 @@ if (isset($_POST["name"], $_POST["company"],
 	$release = $_POST["release"];
 	$gameid = $_POST["gameid"];
 	$data = array($name, $company, $release, $gameid);
-	$sql = "UPDATE `games` SET `name`=?, 
+	$sql = "UPDATE `computergames` SET `name`=?, 
 		`company`=?, `release`=? WHERE gameid=?";
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute($data);
@@ -19,7 +19,7 @@ header('Location: ../index.php?sivu=demo9&kansio=demot');
 
 if (isset($_GET["id"])){
 	// tuli get
-	$sql = "SELECT * FROM games WHERE gameid=?";
+	$sql = "SELECT * FROM computergames WHERE gameid=?";
 	$data = array($_GET["id"]);
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute($data);

@@ -17,7 +17,7 @@
  $company = $_POST["company"];
  $release = $_POST["release"];
  // muuttujien paikalle ? -merkit
- $sql = "INSERT INTO `games` (`name`, `company`, `release`) VALUES (?, ?, ?)";
+ $sql = "INSERT INTO `computergames` (`name`, `company`, `release`) VALUES (?, ?, ?)";
  // kerätään muuttujat taulukkoon:
  $data = array ($name, $company, $release);
  // suoritetaan sql-lause
@@ -26,7 +26,7 @@
  }
  
 // haetaan sql-kyselyllä kaikki pelit
-   $sql = "SELECT * FROM games";
+   $sql = "SELECT * FROM computergames";
 // suoritetaan kysely pdo-yhteydelle
    $stmt = $pdo->query($sql);
    $rows = $stmt->fetchAll();

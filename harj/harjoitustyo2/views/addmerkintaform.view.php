@@ -23,7 +23,6 @@ if(isset($message)) echo $message;
  
 
 
-
 <label for="lajitID">Suorituksen lajit</label><br>
 <select name="lajiID" >
 

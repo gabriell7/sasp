@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `players` (
 
 require "./database/connection.php";
 
-function getAllarvostulut()
+function getAllarvostelut()
 {
     global $pdo; //Kohta 1 ota yhteys
 

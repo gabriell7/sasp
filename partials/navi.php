@@ -32,7 +32,7 @@
 		<li><a href="./index.php?sivu=harj13&kansio=harj">Harjoitus 13</a></li>
 		<li><a href="./index.php?sivu=xmlharj1&kansio=harj">xmlharj1</a></li>
 		<li><a href="./index.php?sivu=xmlharj2&kansio=harj">xmlharj2 </a></li>
-		<li><a href="http://samarium/2008TiviPOk02/gabriel.mupapa/harj/harjoitustyo1/">harjoitustyo1 </a></li>
+		<li><a href="./harj/harjoitustyo1/">harjoitustyo1 </a></li>
 		<li><a href="./harj/harjoitustyo2/">harjoitustyo2 </a></li>
 		<li><a href="http://samarium/2008TiviPOk02/gabriel.mupapa/harj14/index.php">Harjoitus 14a</li>
 	<li><a href="./index.php?sivu=sqlharj2&kansio=harj">sqlharj2</a></li>

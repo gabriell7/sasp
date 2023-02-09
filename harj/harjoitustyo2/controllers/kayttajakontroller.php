@@ -112,33 +112,36 @@ function deletemerkintacontroller()
 }
 
 // hakee id:n mukaan pelaajan tiedot kannasta ja antaa ne muokkauslomakkeelle
-function geteditplayercontroller()
+function geteditmerkintärcontroller()
 {
-    if(isset($_GET["playerID"])) {
-        $playerID=$_GET["playerID"];
-        $player = getPlayerById($playerID);
-        var_dump($player);
-        require "./views/editkaytajaform.view.php";
+    if(isset($_GET["merkintaID"])) {
+        $merkintaID=$_GET["merkintaID"];
+        $merkinta = getmerkintäById($merkintaID);
+        $lajit = getAllLajit();
+       // var_dump($merkinta);
+        require "./views/editmerkintaform.view.php";
     } else {
-        $message="Ei valittuna pelaajaa";
-        $players = getAllPlayers();
+        $message="Ei valittuna merkintää";
+        $merkinnat = getAllmerkinnat();
         require "./admin.view.php";
     }
 }
 
-function posteditplayercontroller()
+function posteditmerkintäcontroller()
 {
-    if(isset($_POST["playerID"],$_POST["nickname"],$_POST["email"],$_POST["character"])) {
-        $playerID = $_POST["playerID"];
-        $nickname = sanit($_POST["nickname"]);
-        $email = sanit($_POST["email"]);
-        $current_character = sanit($_POST["character"]);
+    if(isset($_POST["merkintaID"],$_POST["kayttajaID"],$_POST["lajiID"],$_POST["päiväys"],$_POST["intentsiteeti"],$_POST["kommentti"])) {
+        $merkintaID = $_POST["merkintaID"];
+        $kayttajaID = sanit($_POST["kayttajaID"]);
+        $lajiID = sanit($_POST["lajiID"]);
+        $päiväys = sanit($_POST["päiväys"]);
+        $intentsiteeti = sanit($_POST["intentsiteeti"]);
+        $kommentti = sanit($_POST["kommentti"]);
         if(isset($_POST["banned"])) $banned = 1;
         else $banned=0; 
 
-        $data = array($nickname,$email,$current_character,$banned,$playerID);
+        $data = array($merkintaID,$kayttajaID,$lajiID,$päiväys,$intentsiteeti,$kommentti);
 
-        if(editPlayer($data)) {
+        if(editMerkinta($data)) {
             $message = "Muokkaus on tehty";
 
         } else {
@@ -147,7 +150,7 @@ function posteditplayercontroller()
     } else { 
         $message = "Lomakkeelta puuttuu tietoja";         
     }
-    $players = getAllPlayers();
+    $merkinnat = getAllmerkinnat();
     require "./views/admin.view.php";
 }
 
@@ -164,7 +167,7 @@ function postaddmerkintäcontroller()
       
 
         $data = array($kayttajaID,$lajiID,$päiväys,$Intentsiteeti,$Kommentti);
-var_dump($data);
+//var_dump($data);
         if(addmerkinta($data)) {
             $message = "Merkintä lisätty";
 

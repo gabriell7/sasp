@@ -72,7 +72,14 @@ switch($action) {
         } else require "./views/loginform.view.php";
         break;
     
-
+        case "editmerkinta":
+            if(islogged()) {
+                if($method == "get") {
+                    geteditmerkintärcontroller();
+                }
+                else posteditmerkintäcontroller();
+            } else require "./views/loginform.view.php";
+            break;
 
     default:
     echo "404";

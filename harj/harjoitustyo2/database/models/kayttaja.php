@@ -73,18 +73,18 @@ function getAllmerkintäbykayttaja()
     return $merkinnät;
 
 }
-function getPlayerById($id)
+function getmerkintäById($id)
 {
     global $pdo;
 
-    $sql = "SELECT * FROM players WHERE playerID = ?";
+    $sql = "SELECT * FROM ht2_merkinta WHERE merkintaID = ?";
     $stm = $pdo->prepare($sql);
 
     $stm->bindValue(1, $id);
     $stm->execute();
 
-    $player = $stm->fetchAll(PDO::FETCH_ASSOC);
-    return $player;
+    $merkinta = $stm->fetchAll(PDO::FETCH_ASSOC);
+    return $merkinta;
 }
 
 

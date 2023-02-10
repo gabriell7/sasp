@@ -12,12 +12,11 @@ if(isset($message)) echo $message;
 
 <?php
 
-foreach($merkinnat as $merkinta) { ?>
-    <h4><?=$merkinta["päiväys"];?></h4>
-    <h4><?=$merkinta["intentsiteeti"];?></h4>
-    <h4><?=$merkinta["merkintaID"];?></h4>
-    <h4><?=$merkinta["lajiID"];?></h4>
-    <h4><?=$merkinta["kommentti"];?></h4>
+foreach($arvostelut as $arvostelu) { ?>
+    <h4><?=$arvostelu["kirjoitettu"];?></h4>
+    <h4><?=$arvostelu["otsikko"];?></h4>
+    <h4><?=$arvostelu["kokonaisarvio"];?></h4>
+    <h4><?=$arvostelu["nimi"];?></h4>
 </body>
 <?php
 }

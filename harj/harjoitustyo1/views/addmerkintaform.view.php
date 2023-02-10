@@ -29,9 +29,9 @@ if(isset($message)) echo $message;
 
 <?php
 
-foreach ($lajit as $lajit) {
-    $nimi = $lajit ["nimi"];
-    $id = $lajit["lajiID"];
+foreach ($arvostelijat as $arvostelijat) {
+    $nimi = $arvostelijat ["nimi"];
+    $id = $arvostelijat["lajiID"];
     echo"<option value='$id'>$nimi</option>";
 }
 

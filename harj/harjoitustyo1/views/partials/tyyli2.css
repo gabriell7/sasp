@@ -1,10 +1,10 @@
 body{
-  background-image: linear-gradient(to right, rgb(12, 108, 121) , rgba(37, 78, 189, 0.685));
+  background-image: linear-gradient(to right, rgb(211, 22, 22) , rgba(153, 73, 73, 0.685));
 }
     
   
   .header {
-    background-color: #180d0d;
+    background-color: #0d1812;
     padding: 20px;
     text-align: center;
     

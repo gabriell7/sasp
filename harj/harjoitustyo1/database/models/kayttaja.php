@@ -17,16 +17,16 @@ CREATE TABLE IF NOT EXISTS `players` (
 
 require "./database/connection.php";
 
-function getAllarvostelut()
+function getAllelokuvat()
 {
     global $pdo; //Kohta 1 ota yhteys
 
-    $sql = "SELECT * FROM ht1_arvoteltava";//Kohta 2 rakenna SQL
+    $sql = "SELECT * FROM ht1_arvosteltava";//Kohta 2 rakenna SQL
     $stm = $pdo->query($sql); //Kohta 3 suorita sql
 
     $arvostelijat = $stm->fetchAll(PDO::FETCH_ASSOC);
 
-    return $players;
+    return $arvostelijat;
 
 }
 
@@ -55,25 +55,28 @@ function getAllarvostelu()
     return $arvostelu;
 
 }
-/*
-function getAllmerkintäbykayttaja()
+
+
+
+
+function getAllarvostelubyarvostelija()
 {
     global $pdo; //Kohta 1 ota yhteys
 
-    $sql = "SELECT * FROM ht2_merkinta inner join ht2_laji on ht2_merkinta.lajiID=ht2_laji.lajiID where ht2_merkinta.kayttajaID = ?"; 
+    $sql = "SELECT * FROM ht1_arvostelu inner join ht1_elokuvat on ht1_elokuvat.elokuvaID=ht1_arvostelu.elokuvaID where ht1_arvostelu.arvostelijaID = ?"; 
     //Kohta 2 rakenna SQL
 
     $stm = $pdo->prepare($sql);
 
-    $stm->bindValue(1, $_SESSION{"id"});
+    $stm->bindValue(1, $_SESSION["id"]);
     $stm->execute(); //Kohta 3 suorita sql
 
-    $merkinnät = $stm->fetchAll(PDO::FETCH_ASSOC);
+    $arvostelu = $stm->fetchAll(PDO::FETCH_ASSOC);
 
-    return $merkinnät;
+    return $arvostelu;
 
 }
-*/
+
 
 function getPlayerById($id)
 {
@@ -90,11 +93,11 @@ function getPlayerById($id)
 }
 
 
-function getPlayerByNickname($nickname)
+function getarvostelijaByNickname($nickname)
 {
     global $pdo;
 
-    $sql = "SELECT * FROM ht2_kayttaja WHERE email = ?";
+    $sql = "SELECT * FROM ht1_arvostelija WHERE email = ?";
     $stm = $pdo->prepare($sql);
 
     $stm->bindValue(1, $nickname);
@@ -105,11 +108,11 @@ function getPlayerByNickname($nickname)
 }
 
 
-function addPlayer($data)
+function addArvostejia($data)
 {
     global $pdo;
     var_dump($data);
-    $sql = "INSERT INTO ht2_kayttaja (nimi,salasana,email) VALUES (?,?,?)";
+    $sql = "INSERT INTO ht1_arvostelija (nimi,salasana,email,liittynyt) VALUES (?,?,?, CURDATE())";
     $stm = $pdo->prepare($sql);
     $ok = $stm->execute($data); //palauttaa true tai false
     return $ok;
@@ -152,7 +155,7 @@ function loginPlayer($email,$password)
 {
     global $pdo; //yhteys
 
-    $sql = "SELECT email,salasana FROM ht2_kayttaja WHERE email = ?";
+    $sql = "SELECT email,salasana FROM ht1_arvostelija WHERE email = ?";
 
     $stm = $pdo->prepare($sql);
     $stm->bindValue(1,$email);

@@ -20,16 +20,16 @@ function admincontroller()
 function postregistercontroller()
 {
     if(isset($_POST["kayttajatunnus"],$_POST["password"],$_POST["email"]))   {
-        echo "Formi perillä";
+       // echo "Formi perillä";
         $nickname = sanit($_POST["kayttajatunnus"]);
         $password = sanitpassword($_POST["password"]);
         $email = sanit($_POST["email"]);
        
         $data = array($nickname,$password,$email);
 
-        var_dump($data);
+       
 
-        $ok = addPlayer($data); 
+        $ok = addArvostejia($data); 
 
         if($ok) {
             $message = "Rekisteröinti onnistui";
@@ -55,8 +55,8 @@ function postlogincontroller()
        $ok = loginPlayer($nickname,$password); //tietokantamallissa
 
        if($ok) {
-           $kayttaja =getkayttajaByNickname($nickname);
-           $id = $player[0]["kayttajaID"];
+           $arvostelija =getarvostelijaByNickname($nickname);
+           $id = $arvostelija[0]["arvostelijaID"];
            $ip = $_SERVER["REMOTE_ADDR"];
 
            //asetetaan istuntomuuttujan arvot
@@ -64,7 +64,7 @@ function postlogincontroller()
            $_SESSION["id"] = $id;
            $_SESSION["ip"] = $ip;
 
-           $merkinnat = getAllmerkintäbykayttaja();
+           $arvostelut = getAllarvostelubyarvostelija();
            require "./views/admin.view.php";
        } else {
            $message = "Käyttäjää ei löydy";

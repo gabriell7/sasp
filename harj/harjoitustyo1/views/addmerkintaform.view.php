@@ -10,16 +10,16 @@ if(isset($message)) echo $message;
 
 <form method ="post">
 
-<label for="email">Kommentti</label><br>
-<input id="kayttajatunnus" type="text" name="Kommentti" required><br>
+<label for="email">nimi</label><br>
+<input id="kayttajatunnus" type="text" name="nimi" required><br>
 
 
-<label for ="password">Intentsiteeti</label><br>
-<input id="kayttajatunnus" type="text" name="Intentsiteeti" required><br>
+<label for ="password">kuvaus</label><br>
+<input id="kayttajatunnus" type="text" name="kuvaus" required><br>
 
 
-<label for="Suorituksen päiväys">Suorituksen päiväys:</label><br>
-<input  id="kayttajatunnus" type="date" id="" name="päiväys">
+<label for="Suorituksen päiväys">pisteet</label><br>
+<input  id="kayttajatunnus" type= "number" id="" name="pisteet">
  
 
 
@@ -37,7 +37,7 @@ foreach ($arvostelijat as $arvostelijat) {
 
 ?>
 </select>
-<br><input type="submit" value="lisää merkintä">
+<br><input type="submit" value="lisää arvosana">
 </form>
 
 

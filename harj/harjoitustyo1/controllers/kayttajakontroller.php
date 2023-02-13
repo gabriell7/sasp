@@ -4,7 +4,7 @@ require "./helpers/helper.php";
 
 function indexcontroller()
 {
-    $arvostelut = getAllarvostelut();
+    $elokuvat = getAllelokuvat();
     //var_dump($players);
     require "./views/index.view.php";
 }
@@ -33,7 +33,7 @@ function postregistercontroller()
 
         if($ok) {
             $message = "Rekisteröinti onnistui";
-            $arvostelut = getAllarvostelut(); //hakee kaikki pelaajat kannasta
+            $elokuvat = getAllelokuvat(); //hakee kaikki pelaajat kannasta
             require "./views/index.view.php";
         }
         else {
@@ -89,7 +89,7 @@ function logoutcontroller()
 
 function getaddmerkintärcontroller()
 {
-    $lajit = getAllLajit();
+    $arvostelut = getAllelokuvat();
     require "./views/addmerkintaform.view.php";
 
 }
@@ -150,20 +150,21 @@ function posteditplayercontroller()
 }
 
 
-function postaddmerkintäcontroller()
+function postaddarvostelutcontroller()
 {
-    if(isset($_POST["lajiID"],$_POST["päiväys"],$_POST["Intentsiteeti"],$_POST["Kommentti"])) {
+    if(isset($_POST["arvosteluID"],$_POST["otsikko"],$_POST["kokonaisarvio"],$_POST["elokuvaID"],$_POST["arvostelija"],$_POST["kirjoitettu"])) {
         
-        $kayttajaID = $_SESSION["id"];
-        $lajiID = sanit($_POST["lajiID"]);
-        $päiväys = sanit($_POST["päiväys"]);
-        $Intentsiteeti = sanit($_POST["Intentsiteeti"]);
-        $Kommentti = sanit($_POST["Kommentti"]);
+        $arvosteluID = $_SESSION["id"];
+        $otsikko = sanit($_POST["otsikko"]);
+        $kokonaisarvio = sanit($_POST["kokonaisarvio"]);
+        $elokuvaID = sanit($_POST["elokuvaID"]);
+        $arvostelija = sanit($_POST["arvostelija"]);
+        $kirjoitettu = sanit($_POST["kirjoitettu"]);
       
 
-        $data = array($kayttajaID,$lajiID,$päiväys,$Intentsiteeti,$Kommentti);
+        $data = array($arvosteluID,$otsikko,$päkokonaisarvioiväys,$elokuvaID,$arvostelija,$kirjoitettu);
 var_dump($data);
-        if(addmerkinta($data)) {
+        if(addarvostelu($data)) {
             $message = "Merkintä lisätty";
 
         } else {
@@ -172,7 +173,7 @@ var_dump($data);
     } else { 
         $message = "Lomakkeelta puuttuu tietoja";         
     }
-    $merkinnat = getAllmerkintäbykayttaja();
+    $arvostelu = getAllelokuvatbykayttaja();
     require "./views/admin.view.php";
 }
 ?>

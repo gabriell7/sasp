@@ -57,7 +57,7 @@ switch($action) {
         if($method == "get") {
             getaddmerkintärcontroller();
         }
-        else postaddmerkintäcontroller();
+        else postaddarvostelutcontroller();
     } else require "./views/loginform.view.php";
     break;
 

@@ -21,7 +21,7 @@ function getAllelokuvat()
 {
     global $pdo; //Kohta 1 ota yhteys
 
-    $sql = "SELECT * FROM ht1_arvosteltava";//Kohta 2 rakenna SQL
+    $sql = "SELECT * FROM ht1_elokuvat";//Kohta 2 rakenna SQL
     $stm = $pdo->query($sql); //Kohta 3 suorita sql
 
     $arvostelijat = $stm->fetchAll(PDO::FETCH_ASSOC);

@@ -7,27 +7,37 @@ include "./views/partials/adminhead.php";
 if(isset($message)) echo $message;
 ?>
 
-<form method ="post">
+form method ="post">
 
-    <input type ="hidden" name="kayttajaID" value="<?= $kayttaja[0]["playerID"];?>">
-
-    <label for="nickname">Nickname</label><br>
-    <input type ="text" name ="kayttaja" value ="<?= $kayttaja[0]["kayttaja"];?>" required><br>
-
-   
-    <label for="email">Email</label><br>
-    <input type="email" name="email" value ="<?= $kayttaja[0]["email"]; ?>" required><br>
-
-    
-    <br>
-    <label for="banned">Bannattu</label>
-    <input type ="checkbox" name="banned" <?php if($player[0]["banned"] == 0) echo "value=\"0\"";
-    else echo "value=\"1\" checked";?>><br>
+<label for="kommentti">Kommentti</label><br>
+<input  type="text" name= "kommentti" value="<?php echo $arvostelu[0]["kommentti"]; ?>" ><br>
 
 
-    <input type="submit" value="Muuta pelaajaa">
-    </form>
+<label for ="password">Intentsiteeti</label><br>
+<input id="kayttajatunnus" type="text" value="<?php echo $arvostelu[0]["intentsiteeti"]; ?>"name="intentsiteeti" required><br>
 
+
+<label for="Suorituksen päiväys">Suorituksen päiväys:</label><br>
+<input  id="kayttajatunnus" type="date" value="<?php echo $arvostelu[0]["päiväys"]; ?>" name="päiväys">
+ 
+
+
+
+<label for="lajiID">Suorituksen lajit</label><br>
+<select id="kayttajatunnus" id="" value="<?php echo  $laji[0]["laji"]; ?>" name="päiväys">
+
+<?php
+
+foreach ($lajit as $lajit) {
+    $nimi = $lajit ["nimi"];
+    $id = $lajit["lajiID"];
+    echo"<option value='$id'>$nimi</option>";
+}
+
+?>
+</select>
+<br><input type="submit" value="lisää merkintä">
+</form>
 
 
 <?php 

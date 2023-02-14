@@ -12,7 +12,8 @@ function indexcontroller()
 
 function admincontroller()
 {
-    $merkinnät = getAllmerkintäbykayttaja();
+    $arvostelut = getAllarvostelubyarvostelija();
+    $arvostelut = getAllKayttajat();
     //var_dump($players);
     require "./views/admin.view.php";
 }
@@ -65,6 +66,7 @@ function postlogincontroller()
            $_SESSION["ip"] = $ip;
 
            $arvostelut = getAllarvostelubyarvostelija();
+           $arvostelut = getAllKayttajat();
            require "./views/admin.view.php";
        } else {
            $message = "Käyttäjää ei löydy";
@@ -87,56 +89,58 @@ function logoutcontroller()
 }
 
 
-function getaddmerkintärcontroller()
+function getaddarvostelurcontroller()
 {
-    $arvostelut = getAllelokuvat();
-    require "./views/addmerkintaform.view.php";
+    $elokuvat = getAllelokuvat();
+   // var_dump ($elokuvat);
+    require "./views/addarvosteluform.view.php";
 
 }
 
 
-function deletemerkintäcontroller()
+function deletearvostelucontroller()
 {
-    if(isset($_GET["kayttajaID"])) {
-        $kayttajaID = $_GET["kaytajaID"];
-        if(deleteKayttaja($kayttajaID)) $message="Pelaaja on poistettu";
+    if(isset($_GET["arvostelu"])) {
+        $arvostelijaID = $_GET["arvostelu"];
+        if(deletearvostelu($arvostelijaID)) $message="Pelaaja on poistettu";
         else $message="Pelaaja ei poistunut";
-        $merkinnat = getAllmerkinnat();
+        $arvostelut = getAllarvostelubyarvostelija();
+        $arvostelut = getAllKayttajat();
         require "./views/admin.view.php";
     } else header("Location:./index.php?action=admin");
-     $kayttajat = getAllKayttajat();
-        $message = "ei poistettavaa id:tä";
-        require "./views/admin.view.php";
+  //  $arvostelut = getAllarvostelubyarvostelija();
+    //    $message = "ei poistettavaa id:tä";
+      //  require "./views/admin.view.php";
     }
 
 // hakee id:n mukaan pelaajan tiedot kannasta ja antaa ne muokkauslomakkeelle
-function geteditkayttajacontroller()
+function geteditarvostelucontroller()
 {
-    if(isset($_GET["kayttajaID"])) {
-        $kayttajaID=$_GET["kayttajaID"];
-        $kayttaja = getkayttajaById($kayttajaID);
-        var_dump($kayttaja);
+    if(isset($_GET["arvosteluID"])) {
+        $arvosteluID=$_GET["arvosteluID"];
+        $arvostelija = getarvostelijaById($arvosteluID);
+        //var_dump($arvostelu);
         require "./views/editkaytajaform.view.php";
     } else {
         $message="Ei valittuna pelaajaa";
-        $kayttajat = getAllKayttajat();
+        $arvostelut = getAllKayttajat();
         require "./admin.view.php";
     }
 }
 
-function posteditplayercontroller()
+function posteditarvostelucontroller()
 {
-    if(isset($_POST["playerID"],$_POST["nickname"],$_POST["email"],$_POST["character"])) {
-        $playerID = $_POST["playerID"];
-        $nickname = sanit($_POST["nickname"]);
-        $email = sanit($_POST["email"]);
-        $current_character = sanit($_POST["character"]);
+    if(isset($_POST["arvosteluID"],$_POST["otsikko"],$_POST["kokonaisarvio"],$_POST["elokuvaID"])) {
+        $arvosteluID = $_POST["arvosteluID"];
+        $otsikko = sanit($_POST["otsikko"]);
+        $kokonaisarvio = sanit($_POST["kokonaisarvio"]);
+        $elokuvaID = sanit($_POST["elokuvaID"]);
         if(isset($_POST["banned"])) $banned = 1;
         else $banned=0; 
 
-        $data = array($nickname,$email,$current_character,$banned,$playerID);
+        $data = array($otsikko,$kokonaisarvio,$elokuvaID,$banned,$arvosteluID);
 
-        if(editPlayer($data)) {
+        if(editarvostelu($data)) {
             $message = "Muokkaus on tehty";
 
         } else {
@@ -145,25 +149,25 @@ function posteditplayercontroller()
     } else { 
         $message = "Lomakkeelta puuttuu tietoja";         
     }
-    $players = getAllPlayers();
+    $arvostelut = getAllarvostelu();
     require "./views/admin.view.php";
 }
 
 
 function postaddarvostelutcontroller()
 {
-    if(isset($_POST["arvosteluID"],$_POST["otsikko"],$_POST["kokonaisarvio"],$_POST["elokuvaID"],$_POST["arvostelija"],$_POST["kirjoitettu"])) {
+    if(isset($_POST["arvostelu"],$_POST["otsikko"],$_POST["kokonaisarvio"],$_POST["elokuvaID"])) {
         
-        $arvosteluID = $_SESSION["id"];
+        $arvostelijaID = $_SESSION["id"];
         $otsikko = sanit($_POST["otsikko"]);
         $kokonaisarvio = sanit($_POST["kokonaisarvio"]);
         $elokuvaID = sanit($_POST["elokuvaID"]);
-        $arvostelija = sanit($_POST["arvostelija"]);
-        $kirjoitettu = sanit($_POST["kirjoitettu"]);
+        $arvostelu = sanit($_POST["arvostelu"]);
+        $kirjoitettu = date("Y-m-d");
       
 
-        $data = array($arvosteluID,$otsikko,$päkokonaisarvioiväys,$elokuvaID,$arvostelija,$kirjoitettu);
-var_dump($data);
+        $data = array($arvostelu,$otsikko,$kokonaisarvio,$elokuvaID,$arvostelijaID,$kirjoitettu);
+//var_dump($data);
         if(addarvostelu($data)) {
             $message = "Merkintä lisätty";
 
@@ -173,7 +177,8 @@ var_dump($data);
     } else { 
         $message = "Lomakkeelta puuttuu tietoja";         
     }
-    $arvostelu = getAllelokuvatbykayttaja();
+    $arvostelut = getAllarvostelubyarvostelija();
+    $arvostelut = getAllKayttajat();
     require "./views/admin.view.php";
 }
 ?>

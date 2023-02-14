@@ -17,6 +17,9 @@ foreach($arvostelut as $arvostelu) { ?>
     <h4><?=$arvostelu["otsikko"];?></h4>
     <h4><?=$arvostelu["kokonaisarvio"];?></h4>
     <h4><?=$arvostelu["nimi"];?></h4>
+    <a href="./index.php?action=editarvostelu&arvosteluID=<?= $arvostelu["arvosteluID"];?>">Muokkaa</a><br>
+<a href="./index.php?action=deletearvostelu&arvostelu=<?= $arvostelu["arvosteluID"];?>">Poista</a><br>
+
 </body>
 <?php
 }

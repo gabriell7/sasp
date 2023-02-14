@@ -78,22 +78,22 @@ function getAllarvostelubyarvostelija()
 }
 
 
-function getPlayerById($id)
+function getarvostelijaById($id)
 {
     global $pdo;
 
-    $sql = "SELECT * FROM players WHERE playerID = ?";
+    $sql = "SELECT * FROM ht1_arvostelija WHERE arvostelijaID = ?";
     $stm = $pdo->prepare($sql);
 
     $stm->bindValue(1, $id);
     $stm->execute();
 
-    $player = $stm->fetchAll(PDO::FETCH_ASSOC);
-    return $player;
+    $arvostelu = $stm->fetchAll(PDO::FETCH_ASSOC);
+    return $arvostelu;
 }
 
 
-function getarvostelijaByNickname($nickname)
+function getarvostelijaByNickname($nimi)
 {
     global $pdo;
 
@@ -118,11 +118,11 @@ function addArvostejia($data)
     return $ok;
 }
 
-function addmerkinta($data)
+function addarvostelu($data)
 {
     global $pdo;
     var_dump($data);
-    $sql = "INSERT INTO ht2_merkinta (kayttajaID,lajiID,päiväys,intentsiteeti,kommentti) VALUES (?,?,?,?,?)";
+    $sql = "INSERT INTO ht1_arvostelu (arvostelu,otsikko,kokonaisarvio,elokuvaID,arvostelijaID,kirjoitettu) VALUES (?,?,?,?,?,?)";
     $stm = $pdo->prepare($sql);
     $ok = $stm->execute($data); //palauttaa true tai false
     return $ok;
@@ -138,11 +138,11 @@ function editPlayer($data)
     return $ok;
 }
 
-function deletePlayer($id)
+function deletearvostelu($id)
 {
     global $pdo;
 
-    $sql = "DELETE FROM players WHERE playerID = ?";
+    $sql = "DELETE FROM ht1_arvostelu WHERE arvosteluID = ?";
     $stm = $pdo->prepare($sql);
     $stm->bindValue(1, $id);
 

@@ -28,11 +28,14 @@ switch($action) {
     else postlogincontroller();
     break;
 
-    case "lisaa merkinta":
-    if($method =="get")
-    require "./views/lisaamerkintaform.view.php";
-    else postlisaamerkintacontroller();
-    break;
+    case "editarvostelu":
+        if(islogged()) {
+            if($method == "get") {
+                geteditarvostelucontroller();
+            }
+            else posteditarvostelutcontroller();
+        } else require "./views/loginform.view.php";
+        break;
 
     case "admin":
     if(islogged()) {
@@ -46,16 +49,16 @@ switch($action) {
     } else indexcontroller();
     break;
 
-    case "deleteplayer":
+    case "deletearvostelu":
     if(islogged()) {
-        deleteplayercontroller();
+        deletearvostelucontroller();
     } else require "./views/loginform.view.php";
     break;
 
     case "addmerkinta":
     if(islogged()) {
         if($method == "get") {
-            getaddmerkintärcontroller();
+            getaddarvostelurcontroller();
         }
         else postaddarvostelutcontroller();
     } else require "./views/loginform.view.php";

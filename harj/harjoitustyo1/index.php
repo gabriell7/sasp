@@ -33,7 +33,7 @@ switch($action) {
             if($method == "get") {
                 geteditarvostelucontroller();
             }
-            else posteditarvostelutcontroller();
+            else posteditarvostelucontroller();
         } else require "./views/loginform.view.php";
         break;
 

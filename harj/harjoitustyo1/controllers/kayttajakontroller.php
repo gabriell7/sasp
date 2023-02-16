@@ -13,7 +13,6 @@ function indexcontroller()
 function admincontroller()
 {
     $arvostelut = getAllarvostelubyarvostelija();
-    $arvostelut = getAllKayttajat();
     //var_dump($players);
     require "./views/admin.view.php";
 }
@@ -66,7 +65,7 @@ function postlogincontroller()
            $_SESSION["ip"] = $ip;
 
            $arvostelut = getAllarvostelubyarvostelija();
-           $arvostelut = getAllKayttajat();
+          
            require "./views/admin.view.php";
        } else {
            $message = "Käyttäjää ei löydy";
@@ -105,7 +104,6 @@ function deletearvostelucontroller()
         if(deletearvostelu($arvostelijaID)) $message="Pelaaja on poistettu";
         else $message="Pelaaja ei poistunut";
         $arvostelut = getAllarvostelubyarvostelija();
-        $arvostelut = getAllKayttajat();
         require "./views/admin.view.php";
     } else header("Location:./index.php?action=admin");
   //  $arvostelut = getAllarvostelubyarvostelija();
@@ -118,12 +116,13 @@ function geteditarvostelucontroller()
 {
     if(isset($_GET["arvosteluID"])) {
         $arvosteluID=$_GET["arvosteluID"];
-        $arvostelija = getarvostelijaById($arvosteluID);
+        $arvostelu = getarvosteluById($arvosteluID);
+        $elokuvat = getAllelokuvat();
         //var_dump($arvostelu);
-        require "./views/editkaytajaform.view.php";
+        require "./views/editarvosteluform.view.php";
     } else {
         $message="Ei valittuna pelaajaa";
-        $arvostelut = getAllKayttajat();
+        $arvostelu = getAllarvostelubyarvostelija();
         require "./admin.view.php";
     }
 }
@@ -149,7 +148,7 @@ function posteditarvostelucontroller()
     } else { 
         $message = "Lomakkeelta puuttuu tietoja";         
     }
-    $arvostelut = getAllarvostelu();
+    $arvostelu = getAllarvostelubyarvostelija();
     require "./views/admin.view.php";
 }
 
@@ -166,7 +165,7 @@ function postaddarvostelutcontroller()
         $kirjoitettu = date("Y-m-d");
       
 
-        $data = array($arvostelu,$otsikko,$kokonaisarvio,$elokuvaID,$arvostelijaID,$kirjoitettu);
+        $data = array($otsikko,$kokonaisarvio,$arvostelu,$elokuvaID,$arvostelijaID,$kirjoitettu);
 //var_dump($data);
         if(addarvostelu($data)) {
             $message = "Merkintä lisätty";
@@ -178,7 +177,6 @@ function postaddarvostelutcontroller()
         $message = "Lomakkeelta puuttuu tietoja";         
     }
     $arvostelut = getAllarvostelubyarvostelija();
-    $arvostelut = getAllKayttajat();
     require "./views/admin.view.php";
 }
 ?>

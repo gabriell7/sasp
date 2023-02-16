@@ -47,7 +47,7 @@ function getAllarvostelu()
 {
     global $pdo; //Kohta 1 ota yhteys
 
-    $sql = "SELECT * FROM ht2_arvosteltava";//Kohta 2 rakenna SQL
+    $sql = "SELECT * FROM ht1_arvostelu";//Kohta 2 rakenna SQL
     $stm = $pdo->query($sql); //Kohta 3 suorita sql
 
     $arvostelu = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -78,11 +78,11 @@ function getAllarvostelubyarvostelija()
 }
 
 
-function getarvostelijaById($id)
+function getarvosteluById($id)
 {
     global $pdo;
 
-    $sql = "SELECT * FROM ht1_arvostelija WHERE arvostelijaID = ?";
+    $sql = "SELECT * FROM ht1_arvostelu WHERE arvosteluID = ?";
     $stm = $pdo->prepare($sql);
 
     $stm->bindValue(1, $id);
@@ -100,7 +100,7 @@ function getarvostelijaByNickname($nimi)
     $sql = "SELECT * FROM ht1_arvostelija WHERE email = ?";
     $stm = $pdo->prepare($sql);
 
-    $stm->bindValue(1, $nickname);
+    $stm->bindValue(1, $nimi);
     $stm->execute();
     
     $player = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -122,7 +122,7 @@ function addarvostelu($data)
 {
     global $pdo;
     var_dump($data);
-    $sql = "INSERT INTO ht1_arvostelu (arvostelu,otsikko,kokonaisarvio,elokuvaID,arvostelijaID,kirjoitettu) VALUES (?,?,?,?,?,?)";
+    $sql = "INSERT INTO ht1_arvostelu (otsikko,kokonaisarvio,arvostelu,elokuvaID,arvostelijaID,kirjoitettu) VALUES (?,?,?,?,?,?)";
     $stm = $pdo->prepare($sql);
     $ok = $stm->execute($data); //palauttaa true tai false
     return $ok;

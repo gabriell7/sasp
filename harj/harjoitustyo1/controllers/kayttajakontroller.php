@@ -129,15 +129,15 @@ function geteditarvostelucontroller()
 
 function posteditarvostelucontroller()
 {
-    if(isset($_POST["arvosteluID"],$_POST["otsikko"],$_POST["kokonaisarvio"],$_POST["elokuvaID"])) {
+    if(isset($_POST["arvosteluID"],$_POST["otsikko"],$_POST["arvostelu"],$_POST["kokonaisarvio"],$_POST["elokuvaID"])) {
         $arvosteluID = $_POST["arvosteluID"];
+        $arvostelu = $_POST["arvostelu"];
         $otsikko = sanit($_POST["otsikko"]);
         $kokonaisarvio = sanit($_POST["kokonaisarvio"]);
         $elokuvaID = sanit($_POST["elokuvaID"]);
-        if(isset($_POST["banned"])) $banned = 1;
-        else $banned=0; 
+        $kirjoitettu = date("Y-m-d");
 
-        $data = array($otsikko,$kokonaisarvio,$elokuvaID,$banned,$arvosteluID);
+        $data = array($otsikko,$kokonaisarvio,$elokuvaID,$kirjoitettu,$arvostelu,$arvosteluID);
 
         if(editarvostelu($data)) {
             $message = "Muokkaus on tehty";
@@ -148,7 +148,7 @@ function posteditarvostelucontroller()
     } else { 
         $message = "Lomakkeelta puuttuu tietoja";         
     }
-    $arvostelu = getAllarvostelubyarvostelija();
+    $arvostelut = getAllarvostelubyarvostelija();
     require "./views/admin.view.php";
 }
 

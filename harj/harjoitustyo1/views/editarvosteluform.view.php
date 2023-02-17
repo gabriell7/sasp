@@ -9,20 +9,22 @@ if(isset($message)) echo $message;
 
 <form method ="post">
 
-<label for="kommentti">Otsikko</label><br>
-<input  type="text" name= "Otsikko" value="<?php echo $arvostelu[0]["otsikko"]; ?>" ><br>
+<label for="otsikko">Otsikko</label><br>
+<input  type="text" name="otsikko" value="<?php echo $arvostelu[0]["otsikko"]; ?>" ><br>
 
 
-<label for="elokuva">kokonaisarvio</label><br>
+<label for="kokonaisarvio">kokonaisarvio</label><br>
 <input  id="" type="text" value="<?php echo $arvostelu[0]["kokonaisarvio"]; ?>" name="kokonaisarvio"><br>
  
 
 <label for="arvostelija">arvostelija</label><br>
-  <textarea type="number" id="" value="<?php echo $arvostelu[0]["arvostelijaID"]; ?>" name="arvostelija"></textarea><br>
+  <textarea type="number" id=""  name="arvostelu">
+  <?php echo $arvostelu[0]["arvostelu"]; ?>
+  </textarea><br>
  
 
-<label for="lajiID">elokuvat</label><br>
-<select id="kayttajatunnus" id="" value="<?php echo  $arvostelu[0]["elokuvaID"]; ?>" name="päiväys">
+<label for="elokuvaID">elokuvat</label><br>
+<select id="kayttajatunnus" id="" value="<?php echo  $arvostelu[0]["elokuvaID"]; ?>" name="elokuvaID">
 
 <?php
 
@@ -37,6 +39,8 @@ foreach ($elokuvat as $elokuvat) {
 ?>
 </select>
 <br><input type="submit" value="lisää merkintä">
+
+<input type="hidden" name="arvosteluID"  value="<?php echo  $arvostelu[0]["arvosteluID"]; ?>" >
 </form>
 
 

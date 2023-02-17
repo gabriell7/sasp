@@ -127,11 +127,12 @@ function addarvostelu($data)
     $ok = $stm->execute($data); //palauttaa true tai false
     return $ok;
 }
-function editPlayer($data)
+
+function editarvostelu($data)
 {
     global $pdo;
 
-    $sql ="UPDATE players SET nickname = ?, email = ?, current_character = ?, banned = ? WHERE playerID = ?";
+    $sql ="UPDATE ht1_arvostelu SET otsikko = ?, kokonaisarvio = ?, elokuvaID = ?,kirjoitettu = ?, arvostelu = ? WHERE arvosteluID = ?";
 
     $stm = $pdo->prepare($sql);
     $ok = $stm->execute($data); //palauttaa true tai false
